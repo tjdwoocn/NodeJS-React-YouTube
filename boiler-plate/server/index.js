@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
-app.use(cors())
+// app.use(cors())
 
 // mongodb 접속 정보 가져오기
 // Mongo DB Connection
@@ -23,7 +23,9 @@ const { request } = require('express');
 mongoose.connect(config.mongoURI).then(() => console.log('MongoDB Connected..'))
     .catch(err => console.log(err))
     
-app.use('/api/users', require('./routes/users'));
+// app.use('/api/users', require('./routes/users'));
+app.use('/api/video', require('./routes/video'));
+
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
