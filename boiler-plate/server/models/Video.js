@@ -1,40 +1,39 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
-const saltRounds = 10;
-const jwt = require('jsonwebtoken')
+const Schema = mongoose.Schema;
 
-//TODO Video Model
 const videoSchema = mongoose.Schema({
-    name: {
-        type: String,
-        maxlength: 50
+    writer: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
-    email: {
+    title: {
         type: String,
-        trim: true,
-        unique: 1,
-        maxlength: 500
+        maxLength: 50
     },
-    password: {
-        type: String,
-        minlength: 5
+    description: {
+        type: String
     },
-    lastname: {
-        type: String,
-        maxlength: 50
+    privacy: {
+        type: Number
     },
-    role: {
+    filePath: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    views: {
         type: Number,
         default: 0
     },
-    image: String,
-    token: {
+    duration: {
         type: String
     },
-    tokenExp: {
-        type: Number
+    thumbnail: {
+        type: String
     }
-})
+
+}, {timestamps: true})
 
 const Video = mongoose.model('Video', videoSchema)
 

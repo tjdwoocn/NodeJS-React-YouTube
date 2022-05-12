@@ -21,7 +21,7 @@ function RightMenu(props) {
         });
     };
 
-    if (user.userData && !user.userData.isAuth) {
+    if (user.user && !user.user.isAuth) {
         // 로그인 안한 사람들
         return (
             <Menu mode={props.mode}>

@@ -16,7 +16,7 @@ export default function (state= {}, action){
             break;
 
         case AUTH_USER:
-            return { ...state, userData: action.payload}
+            return { ...state, user: action.payload}
             break;
 
         default:

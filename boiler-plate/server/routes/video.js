@@ -47,7 +47,7 @@ router.post('/uploads', (req, res) => {
 
 // video upload router
 router.post('/uploadVideo', (req, res) => {
-
+    console.log(req.body, "리퀘")
     // 비디오 정보들을 저장한다
     const video = new Video (req.body)  // video 의 모든 variables 정보를 담음
     // video 정보를 mongo db에 저장하기 
@@ -86,7 +86,6 @@ router.post('/thumbnail', (req, res) => {
     // 비디오 정보 가져오기
     ffmpeg.ffprobe(req.body.url, function (err, metadata){    // ffprobe는 ffmpeg를 다운받을때 같이 가져와짐
         console.dir(metadata); // all metadata
-        console.log(metadata.format.duration);
         fileDuration = metadata.format.duration
     });
 
@@ -95,7 +94,7 @@ router.post('/thumbnail', (req, res) => {
     ffmpeg(req.body.url)
     .on('filenames', function (filenames) { // 비디오 썸네일의 파일네임을 생성하고
         console.log('Will generate ' + filenames.join(', '))
-        console.log(filenames)
+
 
         filePath = "uploads/thumbnails/" + filenames[0]
     })

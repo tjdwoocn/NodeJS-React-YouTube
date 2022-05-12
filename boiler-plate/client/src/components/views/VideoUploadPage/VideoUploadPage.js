@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { useSelector } from "react-redux";   // redux hook 사용을 위해
 import { useNavigate } from 'react-router-dom'
+import Auth from '../../../hoc/auth'
 
 
 const { Title } = Typography;
@@ -41,7 +42,6 @@ function UploadVideoPage(props) {
     }
 
     const handleChangeDecsription = (event) => {
-        console.log(event.currentTarget.value)
 
         setDescription(event.currentTarget.value)
     }
@@ -58,7 +58,7 @@ function UploadVideoPage(props) {
         // 원래 submit 버튼을 클릭했을때 일어나는 이벤트를 방지하기 위함?? 우리가 하고싶은 event를 발생시키기 위함?
         event.preventDefault();
 
-        if (user.userData && !user.userData.isAuth) {
+        if (user.user && !user.user.isAuth) {
             return alert('Please Log in First')
         }
 
@@ -69,7 +69,7 @@ function UploadVideoPage(props) {
         }
 
         const variables = {
-            writer: "624d44c2f07655f68d2323c85415",    // redux hook으로 가져온 것
+            writer: user.user._id,    // redux hook으로 가져온 것
             title: title,
             description: Description,
             privacy: privacy,
@@ -82,14 +82,12 @@ function UploadVideoPage(props) {
         axios.post('/api/video/uploadVideo', variables)
             .then(response => {
                 if (response.data.success) {
-                    console.log(response.data)
                     alert('video Uploaded Successfully')
                     setTimeout(() => {
                         navigate('/')
                     }, 2000);
                 } else {
                     alert('Failed to upload video')
-                    console.log(response.data)
                 }
             })
 
@@ -101,13 +99,11 @@ function UploadVideoPage(props) {
         const config = {
             header: { 'content-type': 'multipart/form-data' }
         }
-        console.log(files)
         formData.append("file", files[0])
 
         axios.post('/api/video/uploads', formData, config)
             .then(response => {
                 if (response.data.success) {
-                    console.log(response.data)
 
                     let variable = {
                         url: response.data.url,
@@ -121,7 +117,6 @@ function UploadVideoPage(props) {
                     axios.post('/api/video/thumbnail', variable)
                         .then(response => {
                             if (response.data.success) {
-                                console.log(response.data)
                                 setDuration(response.data.fileDuration)
                                 setThumbnail(response.data.url)
                             } else {
@@ -206,4 +201,4 @@ function UploadVideoPage(props) {
     )
 }
 
-export default UploadVideoPage
+export default Auth(UploadVideoPage, true);
