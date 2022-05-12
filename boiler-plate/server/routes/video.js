@@ -45,17 +45,48 @@ router.post('/uploads', (req, res) => {
 
 })
 
+// video upload router
+router.post('/uploadVideo', (req, res) => {
+
+    // 비디오 정보들을 저장한다
+    const video = new Video (req.body)  // video 의 모든 variables 정보를 담음
+    // video 정보를 mongo db에 저장하기 
+    video.save((err, doc) => {
+        if(err) return res.json({ success : false , err})
+        res.status(200).json({ success : true })
+    })
+
+})
+
+
+
+// video 불러오기 router
+router.post('/getVideos', (req, res) => {
+
+    // 비디오 정보들을 DB에서 가져와서 클라이언트에 보낸다.
+    Video.find()
+    .populate('writer')
+    .exec((err, videos) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).json({ success: true, videos })
+    })
+
+})
+
+
+
+// Thumbnail router
 router.post('/thumbnail', (req, res) => {
 
     // client 에서 받은 비디오에 해당하는 썸네일을 생성하고, 비디오 러닝타임도 가져오기
 
-    let filePaht = "";
+    let filePath = "";
     let fileDuration = "";
 
     // 비디오 정보 가져오기
     ffmpeg.ffprobe(req.body.url, function (err, metadata){    // ffprobe는 ffmpeg를 다운받을때 같이 가져와짐
         console.dir(metadata); // all metadata
-        console.log(metadata.url.duration);
+        console.log(metadata.format.duration);
         fileDuration = metadata.format.duration
     });
 

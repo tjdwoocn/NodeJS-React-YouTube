@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Typography, Button, Form, message, Input } from 'antd';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";   // redux hook 사용을 위해
+import { useNavigate } from 'react-router-dom'
+
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -21,6 +23,8 @@ const Catogory = [
 ]
 
 function UploadVideoPage(props) {
+    let navigate = useNavigate();
+
     const user = useSelector(state => state.user);
 
     const [title, setTitle] = useState("");
@@ -51,7 +55,7 @@ function UploadVideoPage(props) {
     }
 
     const onSubmit = (event) => {
-
+        // 원래 submit 버튼을 클릭했을때 일어나는 이벤트를 방지하기 위함?? 우리가 하고싶은 event를 발생시키기 위함?
         event.preventDefault();
 
         if (user.userData && !user.userData.isAuth) {
@@ -65,7 +69,7 @@ function UploadVideoPage(props) {
         }
 
         const variables = {
-            writer: user.userData._id,
+            writer: "624d44c2f07655f68d2323c85415",    // redux hook으로 가져온 것
             title: title,
             description: Description,
             privacy: privacy,
@@ -78,10 +82,14 @@ function UploadVideoPage(props) {
         axios.post('/api/video/uploadVideo', variables)
             .then(response => {
                 if (response.data.success) {
+                    console.log(response.data)
                     alert('video Uploaded Successfully')
-                    props.history.push('/')
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 2000);
                 } else {
                     alert('Failed to upload video')
+                    console.log(response.data)
                 }
             })
 
@@ -96,11 +104,13 @@ function UploadVideoPage(props) {
         console.log(files)
         formData.append("file", files[0])
 
-        axios.post('/api/video/uploadfiles', formData, config)
+        axios.post('/api/video/uploads', formData, config)
             .then(response => {
                 if (response.data.success) {
+                    console.log(response.data)
 
                     let variable = {
+                        url: response.data.url,
                         filePath: response.data.filePath,
                         fileName: response.data.fileName
                     }
@@ -111,8 +121,9 @@ function UploadVideoPage(props) {
                     axios.post('/api/video/thumbnail', variable)
                         .then(response => {
                             if (response.data.success) {
+                                console.log(response.data)
                                 setDuration(response.data.fileDuration)
-                                setThumbnail(response.data.thumbsFilePath)
+                                setThumbnail(response.data.url)
                             } else {
                                 alert('Failed to make the thumbnails');
                             }
@@ -148,7 +159,9 @@ function UploadVideoPage(props) {
                             </div>
                         )}
                     </Dropzone>
-
+                    
+                    {/* Thumbnail */}
+                    {/* Thumbnail이 빈 스트링이 아니고, 실제로 이미지가 있을때만 보여지도록 설정 */}
                     {Thumbnail !== "" &&
                         <div>
                             <img src={`http://localhost:5000/${Thumbnail}`} alt="haha" />
