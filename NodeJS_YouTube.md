@@ -76,5 +76,26 @@
 - client의 VideoUploadPage.js 작업
 - 썸네일 route 생성을 위해 server의 video.js 작업 
 - server/uploads 폴더안에 'thumbnails' 폴더 생성하기
+- 후... 많은 에러와 시련과 고통이 함께하였지만 결국 썸네일 생성 및 보여주기까지 완료!
+<img src="https://raw.githubusercontent.com/tjdwoocn/Basic-NodeJS-React/main/imgs/20220511_200643.png" alt="alt text" title="image Title" align='center' />
+
+
+## 7강. 비디오 업로드하기
+- Submit 버튼을 클릭했을때 비디오를 포함한 모든 정보들이 서버, 데이터베이스에 저장되도록 하기!
+### RDBMS vs MongoDB
+- 두개의 DB의 요소들 이름이 조금씩 차이가 남
+<img src="https://raw.githubusercontent.com/tjdwoocn/Basic-NodeJS-React/main/imgs/20220511_201154.png" alt="alt text" title="image Title" align='center' />
+
+### Video Collection 만들기
+- "boiler-plate/models" 폴더에 "video.js" 파일을 생성한 뒤 Video 정보 저장을 위한 스키마 생성하기
+
+### onSubmit function 만들기
+- client의 VideoUploadPage.js 작업
+- "event.preventDefault();" 이게 뭘 방지하는지 궁금
+- ... mongoDB와 연결하여 obj ID 가져오고 이것저것 해야 하는데 ... 이부분이 진행안되서 막힘!
+
+
+## 8강. 랜딩 페이지에 비디오들 나타나게 하기
+### 
 
 
