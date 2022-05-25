@@ -59,9 +59,8 @@ router.post('/uploadVideo', (req, res) => {
 })
 
 
-
 // video 불러오기 router
-router.post('/getVideos', (req, res) => {
+router.get('/getVideos', (req, res) => {
 
     // 비디오 정보들을 DB에서 가져와서 클라이언트에 보낸다.
     Video.find()
