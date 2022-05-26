@@ -125,3 +125,24 @@
 ### MongoDB에서 비디오 데이터 가져오기
 
 ### 가져온 데이터들을 스크린에 출력
+
+
+## 10강. 비디오 디테일 페이지에 Side 비디오 생성
+- 이전 강의에서 만들었던 비디오 디테일 페이지 오른쪽에 다른 나머지 비디오 목록을 보여주는 기능 추가
+
+### Side Video 부분 Layout Template 만들기
+- 왼쪽, 오른쪽 부분 각기 다르게 작업 및 생성
+- VideoDetail 폴더 내에 Section 폴더 생성 후 해당 폴더에 SideVideo.js 파일 생성
+
+### 한개의 카드 template 만들기
+- 왼쪽엔 Thumbnail 이미지, 오른쪽엔 비디오 정보
+
+### DB에서 모든 비디오 데이터 불러오기
+- 기존 LandingPage 에서 사용했던 getVideos api useEffect 가져와서 사용
+
+### 불러온 데이터 화면에 출력
+- React.Fragment 활용
+- 여러 비디오를 동시에 띄우기 위해 map() 함수 사용
+
+
+

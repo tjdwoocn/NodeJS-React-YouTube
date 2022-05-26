@@ -3,6 +3,7 @@ import Auth from '../../../hoc/auth'
 import { Row, Col, List, Avatar } from 'antd'
 import axios from 'axios';
 import {useParams} from "react-router-dom";
+import SideVideo from "./Sections/SideVideo";
 
 // import { post } from '../../../../../server/routes/video'
 
@@ -52,7 +53,25 @@ function VideoDetailPage() {
   
   
         </Col>
-        <Col lg={6} xs = {24} > Side Videos </Col>
+
+
+
+
+        <Col lg={6} xs = {24} >
+          
+          <SideVideo />
+
+        
+           
+           
+           
+        </Col>
+
+
+
+
+
+
         <div>VideoDetailPage</div>
       </Row>
     )
