@@ -23,14 +23,14 @@ const Catogory = [
     { value: 0, label: "Sports" },
 ]
 
-function UploadVideoPage(props) {
-    let navigate = useNavigate();
+function VideoUploadPage(props) {
+    const navigate = useNavigate();
 
     const user = useSelector(state => state.user);
 
     const [title, setTitle] = useState("");
     const [Description, setDescription] = useState("");
-    const [privacy, setPrivacy] = useState(0)
+    const [privacy, setPrivate] = useState(0)
     const [Categories, setCategories] = useState("Film & Animation")
     const [FilePath, setFilePath] = useState("")
     const [Duration, setDuration] = useState("")
@@ -46,12 +46,11 @@ function UploadVideoPage(props) {
         setDescription(event.currentTarget.value)
     }
 
-    const handleChangeOne = (event) => {
-        setPrivacy(event.currentTarget.value)
+    const handleChangePrivate = (e) => {
+        setPrivate(e.currentTarget.value)
     }
-
-    const handleChangeTwo = (event) => {
-        setCategories(event.currentTarget.value)
+    const handleChangeCategory = (e) => {
+        setCategories(e.currentTarget.value)
     }
 
     const onSubmit = (event) => {
@@ -110,7 +109,7 @@ function UploadVideoPage(props) {
                         filePath: response.data.filePath,
                         fileName: response.data.fileName
                     }
-                    setFilePath(response.data.filePath)
+                    setFilePath(response.data.url)
 
                     //gerenate thumbnail with this filepath ! 
 
@@ -178,14 +177,14 @@ function UploadVideoPage(props) {
                 />
                 <br /><br />
 
-                <select onChange={handleChangeOne}>
+                <select onChange={handleChangePrivate}>
                     {Private.map((item, index) => (
                         <option key={index} value={item.value}>{item.label}</option>
                     ))}
                 </select>
                 <br /><br />
 
-                <select onChange={handleChangeTwo}>
+                <select onChange={handleChangeCategory}>
                     {Catogory.map((item, index) => (
                         <option key={index} value={item.label}>{item.label}</option>
                     ))}
@@ -201,4 +200,4 @@ function UploadVideoPage(props) {
     )
 }
 
-export default Auth(UploadVideoPage, true);
+export default Auth(VideoUploadPage, true);

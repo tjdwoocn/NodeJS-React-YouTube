@@ -72,7 +72,17 @@ router.get('/getVideos', (req, res) => {
 
 })
 
+// 여기 router에 필요한 데이터가 상위 폴더/파일인 index.js에서 보내지는 거기 떄문에 post 경로로 'api/video/' 부분을 제외시켜줘도 됨
+router.post('/getVideoDetail', (req, res) => {
 
+    Video.findOne({ "_id" : req.body.videoId })
+        .populate('writer')
+        .exec((err, VideoDetail) => {
+            if(err) return res.status(400).send(err)
+            return res.status(200).json({ success: true, VideoDetail })
+        })
+
+})
 
 // Thumbnail router
 router.post('/thumbnail', (req, res) => {

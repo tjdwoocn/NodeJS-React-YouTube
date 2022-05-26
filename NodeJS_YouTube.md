@@ -99,11 +99,29 @@
 - 이전 강의에서 업로드한 비디오들을 랜딩페이지에 나타나게 하려 함
 
 ### 빈 랜딩 페이지 생성
+- client의 LandingPage.js 작업
 - 기존에 있던 랜딩 페이지 내용 제거 (이전 boiler-plate 강의에서 작성했던 랜딩페이지 내용 제거)
 ### 비디오 카드 Template 만들기
-
+- Row, Col 사용하여 총 24개의 카드가 나올 수 있도록 구성
 ### 몽고 DB에서 모든 비디오 데이터 가져오기
-
+- "axios.get('api/video/getVideos')"
 ### 가져온 비디오 데이터들을 스크린에 출력하기 - map() methods 사용
+- "const renderCards = Video.map((video, index)"
 
 
+## 9강. 비디오 디테일 페이지 만들기
+- 랜딩페이지에서 비디오 썸네일을 선택하면 해당 비디오의 페이지가 나오도록
+
+### 비어있는 비디오 디테일 페이지 생성
+- client의 views 폴더에 VideoDetailPage 폴더와 그 안에 VideoDetailPage.js 파일 생성
+
+### 비디오 디테일 페이지를 위한 Route 만들기
+- app.js 에서 VideoDetailPage를 위한 route 생성
+- 모두가 접속 가능하도록 Auth 설정에 null 값 넣어줌 (VideoDetailPage.js 파일의 마지막 export 부분에서)
+
+### 비디오 디테일 페이지 Template 만들기
+- client의 VideoDetailPage.js
+
+### MongoDB에서 비디오 데이터 가져오기
+
+### 가져온 데이터들을 스크린에 출력
