@@ -145,4 +145,23 @@
 - 여러 비디오를 동시에 띄우기 위해 map() 함수 사용
 
 
+## 11강. 구독 기능 1
+- 업로드 된 비디오의 유저를 구독하는 기능을 구현하려 함
 
+### Subscriber Model 만들기
+- server/models 에 'Subscriber.js' 파일 생성 후 스키마 작성
+
+### Subscribe Button UI 만들기
+- 'VideoDetailPage.js' 에서 'actions' 부분에 Subscribe Button 만들기
+- 'actions' 부분에 모든 기능들을 넣으면 코드가 길어지고 복잡해지기 때문에 'SideVideo' 만들때와 비슷하게 따로 함수/파일로 작성해주기
+- 'Sections' 폴더에 'Subscribe.js' 파일 생성 후 버튼 생성 및 스타일 입력
+
+### 데이터베이스에서 얼마나 많은 사람이 비디오 업로드 한 유저를 구독하는지 정보 가져오기
+- UseEffect 사용
+- 구독자 수를 userTo로 받아오는데 받아오기 위한 Subscribe route 생성 (routes 폴더에 subscribe.js 파일 생성)
+- route를 생성 후에는 항상 index.js에 생성한 route 추가해주기
+- 
+### 사용자가 비디오 업로더를 구독하고 있는지/아닌지 여부 정보 가져오기
+
+
+### 가져온 정보들 화면에 출력

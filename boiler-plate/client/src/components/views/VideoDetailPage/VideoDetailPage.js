@@ -4,6 +4,7 @@ import { Row, Col, List, Avatar } from 'antd'
 import axios from 'axios';
 import {useParams} from "react-router-dom";
 import SideVideo from "./Sections/SideVideo";
+import Subscribe from "./Sections/Subscribe";
 
 // import { post } from '../../../../../server/routes/video'
 
@@ -37,7 +38,7 @@ function VideoDetailPage() {
               <video style={{ width: '100%' }} src={`http://localhost:5000/${VideoDetail.filePath}`} controls/>
               
               <List.Item
-                  actions
+                  actions={[<Subscribe userTo={ VideoDetail.writer._id }/>]}
               >
                 <List.Item.Meta
                     avatar={<Avatar src={VideoDetail.writer.image} />}
