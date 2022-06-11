@@ -165,3 +165,31 @@
 
 
 ### 가져온 정보들 화면에 출력
+
+## 12강 구독 기능 2
+- 이전 강의에서 구독 버튼을 만들었음. 구독 버튼을 눌렀을때 발생하는 기능들을 만들려고 함
+
+### 구독하기 기능 만들기
+- 아직 구독하고 있지 않을때
+- subscribe, unsubscribe api 만들기
+- server/routes/subscribe.js 작업
+### 구독 취소하기 기능 만들기
+- subscribe, unsubscribe api 만들기
+- server/routes/subscribe.js 작업
+
+## 13강 구독 비디오 페이지
+- 구독한 사람의 비디오만 나오는 페이지 만들기
+
+### 빈 Subscription 페이지 생성
+- client의 components/views 폴더에 SubscriptionPage 폴더와 그 안에 SubscriptionPage.js 파일 생성
+
+### Subscription 페이지를 위한 Route 만들기
+- app.js 파일에 SubscriptionPage Route 추가
+
+### Template 만들기
+- LandingPage 참고하기
+- 
+### 내가 구독한 유저의 비디오들만 서버에서 가져오기
+- Server의 routes/video.js 에 getSubscriptionVideos api 만들기
+
+### 가져온 비디오 데이터들을 화면에 출력하기
