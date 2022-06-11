@@ -58,6 +58,16 @@ router.post('/uploadVideo', (req, res) => {
 
 })
 
+// get Subscription Videos only
+router.post('/getSubscriptionVideos', (req, res) => {
+
+    // 자신의 아이디를 가지고 구독하는 사람들을 찾는다
+    Subscriber.find({ userFrom: req.body.userFrom})
+        .exec({ err, subscriberInfo })
+
+    // 찾은 사람들의 비디오를 가지고 온다
+})
+
 
 // video 불러오기 router
 router.get('/getVideos', (req, res) => {

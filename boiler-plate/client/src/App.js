@@ -10,6 +10,7 @@ import LoginPage from './components/views/LoginPage/LoginPage'
 import RegisterPage from './components/views/RegisterPage/RegisterPage'
 import VideoUploadPage from "./components/views/VideoUploadPage/VideoUploadPage";
 import VideoDetailPage from "./components/views/VideoDetailPage/VideoDetailPage";
+import SubscriptionPage from "./components/views/SubscriptionPage/SubscriptionPage";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
           <Route path="/video/upload" element={<VideoUploadPage/>}>
           </Route>
           <Route path="/video/:videoId" element={<VideoDetailPage/>}>
+          </Route>
+          <Route path="subscription" element={<SubscriptionPage/>}>
           </Route>
         </Routes>
       </div>
