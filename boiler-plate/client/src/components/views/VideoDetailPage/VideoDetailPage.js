@@ -5,6 +5,8 @@ import axios from 'axios';
 import {useParams} from "react-router-dom";
 import SideVideo from "./Sections/SideVideo";
 import Subscribe from "./Sections/Subscribe";
+import Comment from "./Sections/Comment";
+
 
 function VideoDetailPage(props) {
   // change router v6
@@ -26,13 +28,15 @@ function VideoDetailPage(props) {
   }, [])
 
   if (VideoDetail.writer) {
+
+    const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscribe userTo={VideoDetail}></Subscribe>
     return (
         <Row gutter={[16, 16]}>
             <Col lg={18} xs={24}>
                 <div style={{width: '100%', padding: '3rem 4rem'}}>
                     <video style={{width: '100%'}} src={`http://localhost:5000/${VideoDetail.filePath}`} controls/>
                     <List.Item
-                        actions={
+                        actions={[ subscribeButton ]
                             [<Subscribe
                                 userTo={VideoDetail.writer._id}
                                 userFrom={localStorage.getItem('userId')}/>]
@@ -44,6 +48,10 @@ function VideoDetailPage(props) {
                             description={VideoDetail.description}
                         ></List.Item.Meta>
                     </List.Item>
+                    
+                    {/* Comments */}
+                    <Comment />
+
                 </div>
             </Col>
             <Col lg={6} xs={24}>
