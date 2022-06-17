@@ -177,6 +177,7 @@
 - subscribe, unsubscribe api 만들기
 - server/routes/subscribe.js 작업
 
+
 ## 13강 구독 비디오 페이지
 - 구독한 사람의 비디오만 나오는 페이지 만들기
 
@@ -193,3 +194,10 @@
 - Server의 routes/video.js 에 getSubscriptionVideos api 만들기
 
 ### 가져온 비디오 데이터들을 화면에 출력하기
+
+
+## 14강 댓글 기능 생성 (1) 구조 설명
+- 댓글 기능, 구조 설명
+
+## 
+
