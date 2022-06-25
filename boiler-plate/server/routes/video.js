@@ -1,7 +1,7 @@
 const express = require('express');
 const { Video } = require("../models/Video");
 const { auth } = require("../middleware/auth");
-const { Subscriber } = require('../models/Subscriber/')
+const { Subscriber } = require('../models/Subscriber')
 const multer = require('multer');
 const path = require('path');
 const router = express.Router();

@@ -1,14 +1,10 @@
 const express = require('express');
 const { Subscriber } = require("../models/Subscriber");
-const { auth } = require("../middleware/auth");
-const path = require('path');
 const router = express.Router();
 
 // ==============================
 //            Subscribe 
 // ==============================
-
-
 
 router.post("/subscribeNumber", (req, res) => {
     Subscriber.find({'userTo': req.body.userTo})
